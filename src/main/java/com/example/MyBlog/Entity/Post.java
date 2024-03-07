@@ -28,15 +28,15 @@ public class Post {
     private Date createdAt;
 
     @OneToMany(mappedBy = "post" , cascade = CascadeType.REMOVE , orphanRemoval = true , fetch = FetchType.LAZY)
-    private List<Comment> blogList;
+    private List<Comment> comments;
     public Post() {
         this.createdAt = new Date();
     }
 
-    public Post(String title, String content, String author_name) {
+    public Post(String title, String content) {
         this.title = title;
         this.content = content;
-        this.author_name = author_name;
+        this.author_name = "Salem";
         this.createdAt = new Date();
     }
 
@@ -69,12 +69,12 @@ public class Post {
     }
 
     public List<Comment> getCommentList() {
-        return blogList;
+        return comments;
     }
 
 
-    public void setCommentList(List<Comment> blogList) {
-        this.blogList = blogList;
+    public void setCommentList(List<Comment> comments) {
+        this.comments = comments;
     }
 
     public void setContent(String content) {

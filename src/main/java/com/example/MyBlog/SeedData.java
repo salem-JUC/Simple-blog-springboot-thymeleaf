@@ -24,12 +24,12 @@ public class SeedData implements CommandLineRunner {
         List<Post> list = postService.getAllPosts();
 
         if (list.isEmpty()){
-            Post post1 = new Post("Blog 1" , "Content of blog 1" , "Salem");
+            Post post1 = new Post("Blog 1" , "Content of blog 1");
             postService.savePost(post1);
             commentService.save(new Comment(post1 , "Comment 1 for blog 1"));
             commentService.save(new Comment(post1 , "Comment 2 for blog 1"));
 
-            Post post2 = new Post("Blog 2" , "Content of blog 2" , "Saleh");
+            Post post2 = new Post("Blog 2" , "Content of blog 2");
             postService.savePost(post2);
             commentService.save(new Comment(post2 , "Comment 1 for blog 2"));
             commentService.save(new Comment(post2 , "Comment 2 for blog 2"));

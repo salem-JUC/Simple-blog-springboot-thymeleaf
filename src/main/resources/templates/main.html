@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div sec:authorize="isAuthenticated()">
+    <a style="coloe:green ; border : 2px black solid" th:href="@{/newPost}" >New Post</a>
+</div>
+    <ul th:each="post : ${posts}">
+        <li>
+            <div>
+                <a th:href="@{Post/{id}(id = ${post.id})}"><h1 th:text ="${post.title}"></h1></a>
+                <p th:text = "${post.content}"></p>
+                <div sec:authorize="isAuthenticated()">
+                    <a style="coloe:red" th:href="@{/deletePost/{id}(id = ${post.id})}" >Delete</a>
+                </div>
+            </div>
+        </li>
+    </ul>
+</body>
+</html>

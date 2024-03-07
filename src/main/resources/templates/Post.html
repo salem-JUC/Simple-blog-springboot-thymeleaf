@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<div class="container">
+    <a href="/Post"><button>Back</button></a>
+    <div class="blog-post">
+        <h1 th:text="${post.title}"></h1>
+        <p class="post-content" th:text="${post.content}"></p>
+        <p class="post-time" th:text="${post.createdAt}"></p>
+
+    </div>
+
+    <div class="comments-section">
+        <h2>Comments</h2>
+        <form id="comment-form" th:object="${comment}" th:method="post" th:action="@{newComment/{id}(id = ${post.id})}">
+            <label for="comment">Write your comment:</label><br>
+            <textarea id="comment" th:field="*{commentText}" rows="4" cols="50"></textarea><br>
+            <button type="submit">Submit</button>
+        </form>
+
+    </div>
+    <div id="comments-list" th:each="comment : ${comments}">
+        <div class="comment">
+            <p th:text="${comment.commentText}"></p>
+            <p th:text="${comment.createdAt}"></p>
+            <div sec:authorize="isAuthenticated()">
+                <a style="coloe:red" th:href="@{/deleteComment/{id}(id = ${comment.id})}" >Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
