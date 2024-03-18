@@ -3,11 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link th:href="@{/css/main.css}" rel="stylesheet" />
 </head>
 <body>
-<div sec:authorize="isAuthenticated()">
-    <a style="coloe:green ; border : 2px black solid" th:href="@{/newPost}" >New Post</a>
-</div>
+    <header>
+        <div class="logo">
+            <span>Logo</span>
+        </div>
+        <div class="nav-links">
+            <a th:href="@{/login}">Login</a>
+            <a th:href="@{/newPost}">New Post</a>
+            <!-- Add more navigation links if needed -->
+        </div>
+    </header>
+    <div sec:authorize="isAuthenticated()">
+        <a style="coloe:green ; border : 2px black solid" th:href="@{/newPost}" >New Post</a>
+    </div>
     <ul th:each="post : ${posts}">
         <li>
             <div>

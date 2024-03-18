@@ -5,12 +5,14 @@
     <title>Title</title>
 </head>
 <body>
-    <form id="post-form" th:object="${post}" th:method="post" th:action="@{/newPost}">
+    <form th:action="@{/newPost}" method="post">
         <label > Write the Title : </label><br>
-        <input type="text" placeholder="Title.." field="*{title}"><br>
+        <input type="text" placeholder="Title.." name="title"><br>
         <label for="comment">Write your Title:</label><br>
-        <textarea id="comment" field="*{content}" rows="4" cols="50"></textarea><br>
+        <textarea id="comment" rows="4" cols="50" name="content"></textarea><br>
         <button type="submit">Submit</button>
     </form>
+
+
 </body>
 </html>

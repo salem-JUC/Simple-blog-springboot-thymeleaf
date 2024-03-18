@@ -1,6 +1,5 @@
-package com.example.MyBlog.Controller.Admin;
+package com.example.MyBlog.Controller;
 
-import com.example.MyBlog.Entity.Comment;
 import com.example.MyBlog.Entity.Post;
 import com.example.MyBlog.Service.CommentService;
 import com.example.MyBlog.Service.PostService;
@@ -36,8 +35,8 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/newPost" , method = RequestMethod.POST)
-    public String saveNewPost(@ModelAttribute Post post){
-        postService.savePost(post);
+    public String saveNewPost(@RequestParam("title") String title, @RequestParam("content") String content){
+        postService.savePost(new Post(title , content));
         return "redirect:/Post";
     }
 }

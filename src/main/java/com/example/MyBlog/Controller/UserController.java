@@ -1,4 +1,4 @@
-package com.example.MyBlog.Controller.publik;
+package com.example.MyBlog.Controller;
 
 import com.example.MyBlog.Entity.Comment;
 import com.example.MyBlog.Entity.Post;
@@ -16,7 +16,7 @@ import java.util.Optional;
 
 @Controller
 @RequestMapping( value = "Post")
-public class PostController {
+public class UserController {
 
     @Autowired
     private PostService postService;
